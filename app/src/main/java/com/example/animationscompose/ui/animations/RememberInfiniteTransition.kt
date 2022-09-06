@@ -51,15 +51,11 @@ internal fun DotLoader(modifier: Modifier = Modifier, color: Color = MaterialThe
 
 @Composable
 private fun getDotInfiniteAnimation(offsetMillis: Int = 0): State<Float> {
-    val dotInitialScale = 1f
-    val dotTargetScale = 0.6f
-    val dotDurationMillis = 240
-    val dotDelayMillis = 140 * 2
     val dotAnimationSpec = infiniteRepeatable<Float>(
         animation = tween(
-            durationMillis = dotDurationMillis,
+            durationMillis = 240,
             easing = FastOutLinearInEasing,
-            delayMillis = dotDelayMillis
+            delayMillis = 280
         ),
         repeatMode = RepeatMode.Reverse,
         initialStartOffset = StartOffset(
@@ -68,8 +64,8 @@ private fun getDotInfiniteAnimation(offsetMillis: Int = 0): State<Float> {
         )
     )
     return rememberInfiniteTransition().animateFloat(
-        initialValue = dotInitialScale,
-        targetValue = dotTargetScale,
+        initialValue = 1f,
+        targetValue = 0.6f,
         animationSpec = dotAnimationSpec
     )
 }
